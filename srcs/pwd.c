@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/28 15:17:31 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/05/28 17:25:21 by kfalia-f         ###   ########.fr       */
+/*   Created: 2019/05/28 18:02:14 by kfalia-f          #+#    #+#             */
+/*   Updated: 2019/05/28 18:06:39 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int		main()
+void	ft_pwd(char *cmd)
 {
-	char	*str;
+	char	dir[999];
 
-	str = NULL;
-	while (1)
-	{
-		if (str && ft_strcmp(str, "exit") == 0)
-			break ;
-		if (str != NULL)
-			ft_strdel(&str);
-		ft_putstr("$>");
-		str = ft_readline(0);
-		ft_interpretator(str);
-	}
-	free(str);
-	return (0);
+	(void)cmd;
+	getcwd(dir, 999);
+	ft_putendl(dir, 0);
 }

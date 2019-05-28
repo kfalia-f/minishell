@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_first_word.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/28 15:17:31 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/05/28 17:25:21 by kfalia-f         ###   ########.fr       */
+/*   Created: 2019/05/28 17:33:17 by kfalia-f          #+#    #+#             */
+/*   Updated: 2019/05/28 17:55:33 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include <libft.h>
 
-int		main()
+char	*ft_first_word(char *str)
 {
-	char	*str;
+	char	*fw;
+	int		i;
 
-	str = NULL;
-	while (1)
-	{
-		if (str && ft_strcmp(str, "exit") == 0)
-			break ;
-		if (str != NULL)
-			ft_strdel(&str);
-		ft_putstr("$>");
-		str = ft_readline(0);
-		ft_interpretator(str);
-	}
-	free(str);
-	return (0);
+	i = 0;
+	fw = NULL;
+	while (str[i] && str[i] != ' ')
+		i++;
+	fw = (char *)malloc(sizeof(char) * (i + 1));
+	fw = ft_strncpy(fw, str, i);
+	fw[i] = '\0';
+	return (fw);
 }

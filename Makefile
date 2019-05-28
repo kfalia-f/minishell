@@ -6,7 +6,7 @@
 #    By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/28 14:35:27 by kfalia-f          #+#    #+#              #
-#    Updated: 2019/05/28 15:28:08 by kfalia-f         ###   ########.fr        #
+#    Updated: 2019/05/28 18:02:09 by kfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,11 @@ FLAGS = -Wall -Wextra -Werror
 
 SRCF = srcs
 
-SRC = $(SRCF)/main.c
+SRC = $(SRCF)/main.c \
+	  $(SRCF)/readline.c \
+	  $(SRCF)/interpretator.c \
+	  $(SRCF)/cd.c \
+	  $(SRCF)/pwd.c
 
 LIBFT_FOLDER = libft
 
@@ -40,7 +44,7 @@ clean:
 	@rm -f $(OBJECTS)
 	@make -C $(LIBFT_FOLDER) clean
 
-fclean:
+fclean: clean
 	@rm -f $(NAME)
 	@make -C $(LIBFT_FOLDER) fclean
 

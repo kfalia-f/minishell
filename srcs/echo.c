@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/28 15:16:30 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/05/29 17:54:49 by kfalia-f         ###   ########.fr       */
+/*   Created: 2019/05/29 17:55:22 by kfalia-f          #+#    #+#             */
+/*   Updated: 2019/05/29 18:07:01 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include <minishell.h>
 
-# define CN 4
+void	ft_echo(char *cmd)
+{
+	int		i;
 
-# include <stdio.h>
-# include <unistd.h>
-# include <dirent.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <signal.h>
-# include <libft.h>
-
-char	*ft_readline(int ret);
-void	ft_interpretator(char *cmd);
-void	ft_cd(char *cmd);
-void	ft_pwd(char *cmd);
-void	ft_echo(char *cmd);
-#endif
+	i = 4;
+	while (cmd[i] && (cmd[i] == ' ' || cmd[i] == '\t'))
+		i++;
+	while (cmd[i])
+	{
+		if (cmd[i] != '"' && cmd[i] != 39 && cmd[i] != 47)
+			write(1, &(cmd[i]), 1);
+		i++;
+	}
+	write(1, "\n", 1);
+}

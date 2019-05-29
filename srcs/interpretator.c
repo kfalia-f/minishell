@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/05/28 18:10:59 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/05/29 17:54:27 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static char		**ft_commands(int n)
 	arr[0] = ft_strjoin("", "exit");
 	arr[1] = ft_strjoin("", "pwd");
 	arr[2] = ft_strjoin("", "cd");
+	arr[3] = ft_strjoin("", "echo");
 	arr[CN] = NULL;
 	return (arr);
 }
@@ -64,5 +65,7 @@ void			ft_interpretator(char *cmd)
 		ft_cd(cmd);
 	if (ft_strcmp(fw, "pwd") == 0)
 		ft_pwd(cmd);
+	if (ft_strcmp(fw, "echo") == 0)
+		ft_echo(cmd);
 	free(fw);
 }

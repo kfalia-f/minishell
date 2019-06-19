@@ -4,16 +4,13 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include "../libft/includes/libft.h"
 
 int		main(int ac, char **av)
 {
-	char str[10];
+	char *env_args[] = { (char*)0 };
+	char *args[] = {"/bin/ls", "-lG", "../../../", (char *)0};
 
-	write(1, "$>", 2);
-	while (SIGINT)
-	{
-		scanf("%s", str);
-		printf("%s\n", str);
-	}
+	execve(args[0], args, env_args);
 	return (0);
 }

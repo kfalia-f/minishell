@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/05/29 17:54:27 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/06/19 17:34:40 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static char		**ft_commands(int n)
 	arr[1] = ft_strjoin("", "pwd");
 	arr[2] = ft_strjoin("", "cd");
 	arr[3] = ft_strjoin("", "echo");
+	arr[4] = ft_strjoin("", "env");
 	arr[CN] = NULL;
 	return (arr);
 }
@@ -54,7 +55,7 @@ static int		ft_check_command(char *cmd)
 	return (0);
 }
 
-void			ft_interpretator(char *cmd)
+void			ft_interpretator(char *cmd, char **av)
 {
 	char	*fw;
 
@@ -67,5 +68,8 @@ void			ft_interpretator(char *cmd)
 		ft_pwd(cmd);
 	if (ft_strcmp(fw, "echo") == 0)
 		ft_echo(cmd);
+	if (ft_strcmp(fw, "env") == 0)
+		ft_env(cmd, av);
+	ft_binaries(cmd, av);
 	free(fw);
 }

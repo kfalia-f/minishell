@@ -6,7 +6,7 @@
 #    By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/28 14:35:27 by kfalia-f          #+#    #+#              #
-#    Updated: 2019/05/29 17:55:12 by kfalia-f         ###   ########.fr        #
+#    Updated: 2019/06/19 17:14:31 by kfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SRC = $(SRCF)/main.c \
 	  $(SRCF)/interpretator.c \
 	  $(SRCF)/cd.c \
 	  $(SRCF)/pwd.c \
-	  $(SRCF)/echo.c
+	  $(SRCF)/echo.c \
+	  $(SRCF)/env.c \
+	  $(SRCF)/binares.c
 
 LIBFT_FOLDER = libft
 

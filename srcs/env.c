@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/28 15:17:31 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/05/29 18:23:28 by kfalia-f         ###   ########.fr       */
+/*   Created: 2019/05/29 18:25:39 by kfalia-f          #+#    #+#             */
+/*   Updated: 2019/05/29 18:27:27 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int		main(int ac, char **av)
+void	ft_env(char *cmd, char **av)
 {
-	char	*str;
+	int		i;
 
-	str = NULL;
-	(void)ac;
-	while (1)
+	i = 2;
+	(void)cmd;
+	while (av[i])
 	{
-		if (str && ft_strcmp(str, "exit") == 0)
-			break ;
-		if (str != NULL)
-			ft_strdel(&str);
-		ft_putstr("$>");
-		str = ft_readline(0);
-		ft_interpretator(str, av);
+		ft_putstr(av[i]);
+		write(1, "\n", 1);
+		i++;
 	}
-	free(str);
-	return (0);
 }

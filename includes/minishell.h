@@ -6,14 +6,14 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:16:30 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/05/29 17:54:49 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/06/19 17:32:06 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# define CN 4
+# define CN 5
 
 # include <stdio.h>
 # include <unistd.h>
@@ -24,8 +24,10 @@
 # include <libft.h>
 
 char	*ft_readline(int ret);
-void	ft_interpretator(char *cmd);
+void	ft_interpretator(char *cmd, char **av);
 void	ft_cd(char *cmd);
 void	ft_pwd(char *cmd);
 void	ft_echo(char *cmd);
+void	ft_env(char *cmd, char **av);
+void	ft_binaries(char *cmd, char **av);
 #endif

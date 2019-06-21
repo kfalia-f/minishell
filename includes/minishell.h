@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:16:30 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/06/19 17:32:06 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/06/21 19:32:02 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	ft_cd(char *cmd);
 void	ft_pwd(char *cmd);
 void	ft_echo(char *cmd);
 void	ft_env(char *cmd, char **av);
-void	ft_binaries(char *cmd, char **av);
+int		ft_binaries(char *cmd, char **av);
 #endif

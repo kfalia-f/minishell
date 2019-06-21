@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/06/19 17:34:40 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/06/21 19:25:25 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ void			ft_interpretator(char *cmd, char **av)
 {
 	char	*fw;
 
+	fw = NULL;
+	if (ft_binaries(cmd, av))
+		return ;
 	fw = ft_first_word(cmd);
 	if (!ft_check_command(fw))
 		ft_error(fw);
@@ -70,6 +73,5 @@ void			ft_interpretator(char *cmd, char **av)
 		ft_echo(cmd);
 	if (ft_strcmp(fw, "env") == 0)
 		ft_env(cmd, av);
-	ft_binaries(cmd, av);
 	free(fw);
 }

@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:30:06 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/06/24 16:53:02 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/06/24 19:34:03 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,25 @@ char	**ft_cut(char *str, char c)
 	return (ft_strsplit(res, ':'));
 }
 
-int		ft_check_binaries(char *cmd, char **av)
+char	*ft_find_bin(char *cmd, char **dirs)
 {
-	char	*path;
+	DIR				*dirp;
+	struct dirent	*dp;
+}
+
+char	ft_check_binaries(char *cmd, char **av)
+{
 	char	**dirs;
+	char	*bin;
+	char	*path;
 	int		i;
 
 	(void)cmd;
 	i = ft_find_line(av, "PATH=");
 	path = ft_strjoin(av[i], "");
 	dirs = ft_cut(path, '=');
-	i = 0;
-	while (dirs[i])
-		ft_putendl(dirs[i++], 0);
 	free (path);
-	return (0);
+	bin = ft_find_bin(cmd, dirs);
+	ft_mass2del(&dirs);
+	return (bin);
 }

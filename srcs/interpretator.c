@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/06/21 19:25:25 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/06/24 16:39:51 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ static char		**ft_commands(int n)
 
 	n = 0;
 	arr = (char **)malloc(sizeof(char *) * (CN + 1));
-	arr[0] = ft_strjoin("", "exit");
-	arr[1] = ft_strjoin("", "pwd");
-	arr[2] = ft_strjoin("", "cd");
-	arr[3] = ft_strjoin("", "echo");
-	arr[4] = ft_strjoin("", "env");
+	arr[0] = ft_strjoin("", "stop");
+	arr[1] = ft_strjoin("", "cd");
+	arr[2] = ft_strjoin("", "env");
 	arr[CN] = NULL;
 	return (arr);
 }
@@ -67,10 +65,6 @@ void			ft_interpretator(char *cmd, char **av)
 		ft_error(fw);
 	if (ft_strcmp(fw, "cd") == 0)
 		ft_cd(cmd);
-	if (ft_strcmp(fw, "pwd") == 0)
-		ft_pwd(cmd);
-	if (ft_strcmp(fw, "echo") == 0)
-		ft_echo(cmd);
 	if (ft_strcmp(fw, "env") == 0)
 		ft_env(cmd, av);
 	free(fw);

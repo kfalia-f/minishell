@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:30:06 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/06/24 19:34:03 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/06/25 18:57:17 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		ft_find_line(char **av, char *line)
 
 char	**ft_cut(char *str, char c)
 {
+	char	**arr;
 	char	*res;
 	int		i;
 
@@ -45,16 +46,39 @@ char	**ft_cut(char *str, char c)
 	if (str[i] == '\0')
 		return (NULL);
 	res = ft_strjoin(str + i + 1, "");
-	return (ft_strsplit(res, ':'));
+	arr = ft_strsplit(res, ':');
+	free(res);
+	return (arr);
 }
 
 char	*ft_find_bin(char *cmd, char **dirs)
 {
 	DIR				*dirp;
 	struct dirent	*dp;
+	char			*fw;
+	int				i;
+
+	i = 0;
+	dirp = NULL;
+	fw = ft_first_word(cmd);
+	while (dirs[i])
+	{
+		dirp = opendir(dirs[i]);
+		while ((dp = readdir(dirp)))
+			if (ft_strcmp(fw, dp->d_name) == 0)
+			{
+				closedir(dirp);
+				free(fw);
+				return (ft_str_path(dirs[i], fw));
+			}
+		closedir(dirp);
+		i++;
+	}
+	free(fw);
+	return (NULL);
 }
 
-char	ft_check_binaries(char *cmd, char **av)
+char	*ft_check_binaries(char *cmd, char **av)
 {
 	char	**dirs;
 	char	*bin;

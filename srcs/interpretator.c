@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/06/24 16:39:51 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/01 16:30:31 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void			ft_interpretator(char *cmd, char **av)
 	if (!ft_check_command(fw))
 		ft_error(fw);
 	if (ft_strcmp(fw, "cd") == 0)
-		ft_cd(cmd);
+		ft_cd(av, cmd);
 	if (ft_strcmp(fw, "env") == 0)
 		ft_env(cmd, av);
 	free(fw);

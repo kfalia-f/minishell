@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:30:06 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/06/25 18:57:17 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/01 17:15:43 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char	*ft_find_bin(char *cmd, char **dirs)
 	DIR				*dirp;
 	struct dirent	*dp;
 	char			*fw;
+	char			*res;
 	int				i;
 
 	i = 0;
@@ -67,15 +68,31 @@ char	*ft_find_bin(char *cmd, char **dirs)
 		while ((dp = readdir(dirp)))
 			if (ft_strcmp(fw, dp->d_name) == 0)
 			{
+				res = ft_str_path(dirs[i], fw);
 				closedir(dirp);
 				free(fw);
-				return (ft_str_path(dirs[i], fw));
+				return (res);
 			}
 		closedir(dirp);
 		i++;
 	}
 	free(fw);
 	return (NULL);
+}
+
+int		ft_exception(char *cmd)
+{
+	char	*fw;
+
+	fw = NULL;
+	fw = ft_first_word(cmd);
+	if (ft_strcmp(fw, "cd") == 0)
+	{
+		free(fw);
+		return (1);
+	}
+	free(fw);
+	return (0);
 }
 
 char	*ft_check_binaries(char *cmd, char **av)
@@ -85,7 +102,9 @@ char	*ft_check_binaries(char *cmd, char **av)
 	char	*path;
 	int		i;
 
-	(void)cmd;
+	if (ft_exception(cmd))
+		return (NULL);
+	bin = NULL;
 	i = ft_find_line(av, "PATH=");
 	path = ft_strjoin(av[i], "");
 	dirs = ft_cut(path, '=');

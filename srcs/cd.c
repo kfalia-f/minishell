@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:59:44 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/05/28 18:57:43 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/01 17:18:07 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*ft_2nd_word(char *cmd)
 	if (i == len)
 		return (NULL);
 	len -= i;
-	path = ft_memalloc(len);
+	path = ft_memalloc(len + 1);
 	len = 0;
 	while (cmd[i] && cmd[i] != ' ')
 		path[len++] = cmd[i++];
@@ -78,7 +78,30 @@ static int ft_valid_command(char *cmd)
 	return (1);
 }
 
-void	ft_cd(char *cmd)
+char	*ft_find_home(char **av)
+{
+	int		i;
+	int		j;
+	char	*path;
+
+	i = 2;
+	j = 0;
+	path = NULL;
+	while (av[i])
+	{
+		if (ft_strncmp(av[i], "HOME", 4) == 0)
+			break ;
+		i++;
+	}
+	if (av[i] == NULL)
+		return (".");
+	while (av[i][j] && av[i][j] != '=')
+		j++;
+	path = ft_strjoin(av[i] + j + 1, "");
+	return (path);
+}
+
+void	ft_cd(char **av, char *cmd)
 {
 	char	*path;
 
@@ -86,7 +109,9 @@ void	ft_cd(char *cmd)
 		return ;
 	path = ft_2nd_word(cmd);
 	if (path == NULL)
-		chdir("/Users/kfalia-f");
+		chdir(path = ft_find_home(av));
 	else if(chdir(path) == -1)
 		ft_error(cmd, 2);
+	if (path)
+		free(path);
 }

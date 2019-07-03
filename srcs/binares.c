@@ -6,37 +6,11 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 17:12:59 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/01 17:01:46 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/03 16:27:18 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-int		ft_num_env(char **av)
-{
-	int		i;
-
-	i = 2;
-	while (av[i])
-		i++;
-	return (i);
-}
-
-char	**ft_pull_env(char **av, int n)
-{
-	char **arr;
-	int i;
-
-	i = 2;
-	arr = (char **)malloc(sizeof(char *) * n);
-	while (av[i])
-	{
-		arr[i - 2] = ft_strjoin(av[i], "");
-		i++;
-	}
-	arr[i - 2] = NULL;
-	return (arr);
-}
 
 char	**ft_get_args(char *cmd)
 {
@@ -63,9 +37,9 @@ int		ft_execute(char *bin, char **args, char **env)
 	return (0);
 }
 
-int		ft_binaries(char *cmd, char **av)
+int		ft_binaries(char *cmd, char **av, char **env)
 {
-	char	**env;
+	//char	**env;
 	char	**args;
 	char	*bin;
 	char	*fw;
@@ -77,7 +51,7 @@ int		ft_binaries(char *cmd, char **av)
 		return (0);
 	i = ft_num_env(av);
 	fw = ft_first_word(cmd);
-	env = ft_pull_env(av, i);
+	//env = ft_pull_env(av, i);
 	args = ft_get_args(cmd);
 	i = 0;
 	if (ft_execute(bin, args,env))

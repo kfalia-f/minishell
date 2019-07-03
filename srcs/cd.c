@@ -6,13 +6,13 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:59:44 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/01 17:18:07 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/03 16:00:31 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static char	*ft_2nd_word(char *cmd)
+char		*ft_2nd_word(char *cmd)
 {
 	int		i;
 	int		len;

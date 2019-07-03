@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/01 16:30:31 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/03 16:40:57 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static char		**ft_commands(int n)
 	arr[0] = ft_strjoin("", "stop");
 	arr[1] = ft_strjoin("", "cd");
 	arr[2] = ft_strjoin("", "env");
+	arr[3] = ft_strjoin("", "unsetenv");
+	arr[4] = ft_strjoin("", "setenv");
 	arr[CN] = NULL;
 	return (arr);
 }
@@ -53,19 +55,23 @@ static int		ft_check_command(char *cmd)
 	return (0);
 }
 
-void			ft_interpretator(char *cmd, char **av)
+void			ft_interpretator(char *cmd, char **av, char **env)
 {
 	char	*fw;
 
 	fw = NULL;
-	if (ft_binaries(cmd, av))
+	if (ft_binaries(cmd, av, env))
 		return ;
 	fw = ft_first_word(cmd);
 	if (!ft_check_command(fw))
+	{
 		ft_error(fw);
+		free(fw);
+		return ;
+	}
 	if (ft_strcmp(fw, "cd") == 0)
 		ft_cd(av, cmd);
-	if (ft_strcmp(fw, "env") == 0)
-		ft_env(cmd, av);
+	if (ft_strcmp(fw, "env") == 0 || ft_strcmp(fw, "unsetenv") == 0)
+		ft_env(cmd, env);
 	free(fw);
 }

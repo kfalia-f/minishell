@@ -6,7 +6,7 @@
 #    By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/28 14:35:27 by kfalia-f          #+#    #+#              #
-#    Updated: 2019/06/24 16:37:35 by kfalia-f         ###   ########.fr        #
+#    Updated: 2019/07/03 16:28:33 by kfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ FLAGS = -Wall -Wextra -Werror
 SRCF = srcs
 
 SRC = $(SRCF)/main.c \
+	  $(SRCF)/env.c \
 	  $(SRCF)/readline.c \
 	  $(SRCF)/interpretator.c \
 	  $(SRCF)/cd.c \
-	  $(SRCF)/env.c \
 	  $(SRCF)/binares.c \
 	  $(SRCF)/check_binaries.c
 

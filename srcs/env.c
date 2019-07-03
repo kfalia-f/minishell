@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 18:25:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/03 16:32:31 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/03 19:12:39 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_env(char *cmd, char **env)
 	if (ft_strcmp(fw, "unsetenv") == 0)
 	{
 		ft_unsetenv(cmd, &env);
+		free(fw);
 		return ;
 	}
 	while (env[i])

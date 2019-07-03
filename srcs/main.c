@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:17:31 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/03 16:29:40 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/03 19:00:11 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		main(int ac, char **av)
 	env = ft_pull_env(av, ft_num_env(av));
 	while (1)
 	{
-		if (str && ft_strcmp(str, "stop") == 0)
+		if (str && ft_strcmp(str, "exit") == 0)
 			break ;
 		if (str != NULL)
 			ft_strdel(&str);

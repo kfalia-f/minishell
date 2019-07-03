@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:30:06 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/03 16:36:45 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/03 19:06:58 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		ft_exception(char *cmd)
 	return (0);
 }
 
-char	*ft_check_binaries(char *cmd, char **av)
+char	*ft_check_binaries(char *cmd, char **env)
 {
 	char	**dirs;
 	char	*bin;
@@ -105,9 +105,9 @@ char	*ft_check_binaries(char *cmd, char **av)
 	if (ft_exception(cmd))
 		return (NULL);
 	bin = NULL;
-	if ((i = ft_find_line(av, "PATH=")) == 0)
+	if ((i = ft_find_line(env, "PATH=")) == 0)
 		return (NULL);
-	path = ft_strjoin(av[i], "");
+	path = ft_strjoin(env[i], "");
 	dirs = ft_cut(path, '=');
 	free (path);
 	bin = ft_find_bin(cmd, dirs);

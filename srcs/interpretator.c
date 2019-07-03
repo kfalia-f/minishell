@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/03 16:40:57 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/03 19:10:54 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char		**ft_commands(int n)
 
 	n = 0;
 	arr = (char **)malloc(sizeof(char *) * (CN + 1));
-	arr[0] = ft_strjoin("", "stop");
+	arr[0] = ft_strjoin("", "exit");
 	arr[1] = ft_strjoin("", "cd");
 	arr[2] = ft_strjoin("", "env");
 	arr[3] = ft_strjoin("", "unsetenv");
@@ -60,7 +60,7 @@ void			ft_interpretator(char *cmd, char **av, char **env)
 	char	*fw;
 
 	fw = NULL;
-	if (ft_binaries(cmd, av, env))
+	if (ft_binaries(cmd, env))
 		return ;
 	fw = ft_first_word(cmd);
 	if (!ft_check_command(fw))

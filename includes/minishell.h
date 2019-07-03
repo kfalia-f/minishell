@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:16:30 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/03 16:33:27 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/03 19:06:34 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ char	*ft_readline(int ret);
 void	ft_interpretator(char *cmd, char **av, char **env);
 void	ft_cd(char **av, char *cmd);
 void	ft_env(char *cmd, char **env);
-int		ft_binaries(char *cmd, char **av, char **env);
-char	*ft_check_binaries(char *cmd, char **av);
+int		ft_binaries(char *cmd, char **env);
+char	*ft_check_binaries(char *cmd, char **env);
 char	**ft_pull_env(char **av, int i);
 int		ft_num_env(char **av);
 char	*ft_2nd_word(char *cmd);

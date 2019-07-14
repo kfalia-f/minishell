@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/03 19:10:54 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/14 17:10:17 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void			ft_interpretator(char *cmd, char **av, char **env)
 	}
 	if (ft_strcmp(fw, "cd") == 0)
 		ft_cd(av, cmd);
-	if (ft_strcmp(fw, "env") == 0 || ft_strcmp(fw, "unsetenv") == 0)
+	if (!ft_strcmp(fw, "env") || !ft_strcmp(fw, "unsetenv") || !ft_strcmp(fw, "setenv"))
 		ft_env(cmd, env);
 	free(fw);
 }

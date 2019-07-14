@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:16:30 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/03 19:06:34 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/14 17:47:12 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ char	*ft_check_binaries(char *cmd, char **env);
 char	**ft_pull_env(char **av, int i);
 int		ft_num_env(char **av);
 char	*ft_2nd_word(char *cmd);
+void	ft_setenv(char *cmd, char ***env);
 #endif

@@ -6,7 +6,7 @@
 #    By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/28 14:35:27 by kfalia-f          #+#    #+#              #
-#    Updated: 2019/07/03 16:28:33 by kfalia-f         ###   ########.fr        #
+#    Updated: 2019/07/14 17:07:19 by kfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC = $(SRCF)/main.c \
 	  $(SRCF)/interpretator.c \
 	  $(SRCF)/cd.c \
 	  $(SRCF)/binares.c \
-	  $(SRCF)/check_binaries.c
+	  $(SRCF)/check_binaries.c \
+	  $(SRCF)/setenv.c
 
 LIBFT_FOLDER = libft
 

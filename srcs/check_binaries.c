@@ -6,24 +6,24 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:30:06 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/03 19:06:58 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/23 18:50:21 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int		ft_find_line(char **av, char *line)
+int		ft_find_line(char ***av, char *line)
 {
 	int		i;
 	int		j;
 
-	i = 2;
-	while (av[i])
+	i = 0;
+	while ((*av)[i])
 	{
 		j = 0;
 		while (line[j])
 		{
-			if (line[j] != av[i][j])
+			if (line[j] != (*av)[i][j])
 				break ;
 			j++;
 		}
@@ -95,7 +95,7 @@ int		ft_exception(char *cmd)
 	return (0);
 }
 
-char	*ft_check_binaries(char *cmd, char **env)
+char	*ft_check_binaries(char *cmd, char ***env)
 {
 	char	**dirs;
 	char	*bin;
@@ -107,7 +107,7 @@ char	*ft_check_binaries(char *cmd, char **env)
 	bin = NULL;
 	if ((i = ft_find_line(env, "PATH=")) == 0)
 		return (NULL);
-	path = ft_strjoin(env[i], "");
+	path = ft_strdup((*env)[i]);
 	dirs = ft_cut(path, '=');
 	free (path);
 	bin = ft_find_bin(cmd, dirs);

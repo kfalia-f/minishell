@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/14 17:10:17 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/23 18:46:41 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int		ft_check_command(char *cmd)
 	return (0);
 }
 
-void			ft_interpretator(char *cmd, char **av, char **env)
+void			ft_interpretator(char *cmd, char **av, char ***env)
 {
 	char	*fw;
 

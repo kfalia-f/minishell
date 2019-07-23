@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 18:25:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/14 14:43:22 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/23 18:47:27 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,29 @@ void	ft_unsetenv(char *cmd, char ***env)
 	free(line);
 }
 
-void	ft_env(char *cmd, char **env)
+void	ft_env(char *cmd, char ***env)
 {
-	//	char	**env;
 	char	*fw;
 	int		i;
 
 	i = 0;
 	fw = ft_first_word(cmd);
-	//env = ft_pull_env(av, ft_num_env(av));
 	if (ft_strcmp(fw, "unsetenv") == 0)
 	{
-		ft_unsetenv(cmd, &env);
+		ft_unsetenv(cmd, env);
 		free(fw);
 		return ;
 	}
 	if (ft_strcmp(fw, "setenv") == 0)
 	{
-		ft_setenv(cmd, &env);
+		ft_setenv(cmd, env);
 		free(fw);
 		return ;
 	}
-	while (env[i])
+	while ((*env)[i])
 	{
-		if (ft_strcmp(env[i], "#DEL") != 0)
-			ft_putendl(env[i], 0);
+		if (ft_strcmp((*env)[i], "#DEL") != 0)
+			ft_putendl((*env)[i], 0);
 		i++;
 	}
 	free(fw);

@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 17:12:59 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/03 19:11:01 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/23 18:52:21 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ char	**ft_get_args(char *cmd)
 	return (res);
 }
 
-int		ft_execute(char *bin, char **args, char **env)
+int		ft_execute(char *bin, char **args, char ***env)
 {
 	int i;
 
 	i = 1;
 	if (fork() == 0)
 	{
-		if (execve(bin, args, env) == -1)
+		if (execve(bin, args, *env) == -1)
 			i = 0;
 	}
 	else
@@ -37,7 +37,7 @@ int		ft_execute(char *bin, char **args, char **env)
 	return (0);
 }
 
-int		ft_binaries(char *cmd, char **env)
+int		ft_binaries(char *cmd, char ***env)
 {
 	//char	**env;
 	char	**args;

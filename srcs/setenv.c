@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 14:43:30 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/14 18:15:13 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/23 18:59:15 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ char	*ft_env_name(char *sc_word)
 		free(sc_word);
 		return (NULL);
 	}
-	env_name = ft_memalloc(i);
+	env_name = ft_memalloc(i + 1);
 	k = 0;
 	while (k < i)
 	{
 		env_name[k] = sc_word[k];
 		k++;
 	}
+	env_name[k] = '\0';
 	return (env_name);
 }
 
@@ -42,18 +43,17 @@ void	ft_add_env(char ***env, char *sc_word)
 	char	**tmp;
 	int		i;
 
-	i = -1;
-	tmp = (char **)malloc(sizeof(char *) * (ft_num_env(*env) + 3));
-	while ((*env)[++i])
-		tmp[i] = ft_strjoin((*env)[i], "");
-	tmp[i] = NULL;
+	i = 0;
+	tmp = (char **)malloc(sizeof(char *) * (ft_num_env(*env) + 2));
+	while ((*env)[i])
+	{
+		tmp[i] = ft_strdup((*env)[i]);
+		i++;
+	}
+	tmp[i] = ft_strdup(sc_word);
+	tmp[i + 1] = NULL;
 	ft_mass2del(env);
-	*env = (char **)malloc(sizeof(char *) * (i + 1));
-	i = -1;
-	while (tmp[++i])
-		(*env)[i] = ft_strjoin(tmp[i], "");
-	(*env)[i] = ft_strjoin(sc_word, "");
-	(*env)[i + 1] = NULL;
+	*env = tmp;
 }
 
 void	ft_setenv(char *cmd, char ***env)

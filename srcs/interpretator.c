@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/25 18:11:13 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/25 19:08:47 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char			*ft_tabsdel(char *str)
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\0')
 		i--;
 	len -= (j - i) - 2;
-	cmd = ft_memalloc(len);
+	cmd = ft_memalloc(len + 1);
 	return (ft_tabsdel_continue(&cmd, str, len));
 }
 
@@ -100,11 +100,15 @@ void			ft_interpretator(char *str, char **av, char ***env)
 	fw = NULL;
 	cmd = ft_tabsdel(str);
 	if (ft_binaries(cmd, env))
+	{
+		free(cmd);
 		return ;
+	}
 	fw = ft_first_word(cmd);
 	if (!ft_check_command(fw))
 	{
 		ft_error(fw);
+		free(cmd);
 		free(fw);
 		return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 17:12:59 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/23 18:52:21 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/25 19:16:51 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int		ft_execute(char *bin, char **args, char ***env)
 
 int		ft_binaries(char *cmd, char ***env)
 {
-	//char	**env;
 	char	**args;
 	char	*bin;
 	char	*fw;
@@ -50,7 +49,6 @@ int		ft_binaries(char *cmd, char ***env)
 	if ((bin = ft_check_binaries(cmd, env)) == NULL)
 		return (0);
 	fw = ft_first_word(cmd);
-	//env = ft_pull_env(av, i);
 	args = ft_get_args(cmd);
 	i = 0;
 	if (ft_execute(bin, args,env))

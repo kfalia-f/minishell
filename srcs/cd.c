@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:59:44 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/28 18:29:20 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/28 21:42:45 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char	*ft_find_home(char **av)
 	return (path);
 }
 
-void	ft_cd(char **av, char *cmd)
+void	ft_cd(char **av, char ***env, char *cmd)
 {
 	struct stat	buff;
 	char		*path;
@@ -114,13 +114,20 @@ void	ft_cd(char **av, char *cmd)
 		return ;
 	path = ft_2nd_word(cmd);
 	if (path == NULL || ft_strncmp(path, "~", 1) == 0)
+	{
 		chdir(path = ft_find_home(av));
+		ft_change_path(env);
+	}
+	else if (ft_strcmp(path, "-") == 0)
+		ft_cd_past(env);
 	else if (stat(path, &buff) < 0)
 		ft_error(cmd, 2);
 	else if (!S_ISDIR(buff.st_mode))
 		ft_error(cmd, 4);
 	else if(chdir(path) == -1)
 		ft_error(cmd, 3);
+	else
+		ft_change_path(env);
 	if (path)
 		free(path);
 }

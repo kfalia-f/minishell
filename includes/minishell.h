@@ -6,14 +6,14 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:16:30 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/28 18:18:12 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/28 19:06:06 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# define CN 5
+# define CN 6
 
 # include <stdio.h>
 # include <unistd.h>
@@ -33,4 +33,5 @@ char	*ft_check_binaries(char *cmd, char ***env);
 int		ft_num_env(char **av);
 char	*ft_2nd_word(char *cmd);
 void	ft_setenv(char *cmd, char ***env);
+void	ft_echo(char *cmd);
 #endif

@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/28 17:57:58 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/28 19:05:54 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ static char		**ft_commands(int n)
 
 	n = 0;
 	arr = (char **)malloc(sizeof(char *) * (CN + 1));
-	arr[0] = ft_strjoin("", "exit");
-	arr[1] = ft_strjoin("", "cd");
-	arr[2] = ft_strjoin("", "env");
-	arr[3] = ft_strjoin("", "unsetenv");
-	arr[4] = ft_strjoin("", "setenv");
+	arr[0] = ft_strdup("exit");
+	arr[1] = ft_strdup("cd");
+	arr[2] = ft_strdup("env");
+	arr[3] = ft_strdup("unsetenv");
+	arr[4] = ft_strdup("setenv");
+	arr[5] = ft_strdup("echo");
 	arr[CN] = NULL;
 	return (arr);
 }
@@ -112,6 +113,8 @@ void			ft_interpretator(char *str, char **av, char ***env)
 		free(fw);
 		return ;
 	}
+	if (!ft_strcmp(fw, "echo"))
+		ft_echo(cmd);
 	if (ft_strcmp(fw, "cd") == 0)
 		ft_cd(av, cmd);
 	if (!ft_strcmp(fw, "env") || !ft_strcmp(fw, "unsetenv") || !ft_strcmp(fw, "setenv"))

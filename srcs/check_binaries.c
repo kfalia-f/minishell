@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:30:06 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/23 18:50:21 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/28 19:08:05 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		ft_exception(char *cmd)
 
 	fw = NULL;
 	fw = ft_first_word(cmd);
-	if (ft_strcmp(fw, "cd") == 0 || ft_strcmp(fw, "env") == 0)
+	if (!ft_strcmp(fw, "cd") || !ft_strcmp(fw, "env") || !ft_strcmp(fw, "echo"))
 	{
 		free(fw);
 		return (1);

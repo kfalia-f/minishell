@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:17:31 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/25 19:05:02 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/28 18:04:02 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		main(int ac, char **av, char **env)
 	while (1)
 	{
 		i = ac - ac;
-		if (str && ft_strcmp(str[0], "exit") == 0)
+		if (str && str[0] && ft_strcmp(str[0], "exit") == 0)
 			break ;
 		if (str != NULL)
 			ft_mass2del(&str);

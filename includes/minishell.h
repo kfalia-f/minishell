@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:16:30 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/25 16:19:54 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/28 18:18:12 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/wait.h>
 # include <signal.h>
 # include <libft.h>
+# include <sys/stat.h>
 
 char	**ft_readline(int ret);
 void	ft_interpretator(char *cmd, char **av, char ***env);

@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:59:44 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/03 16:00:31 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/28 18:29:20 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char		*ft_2nd_word(char *cmd)
 
 static void	ft_error(char *cmd, int en)
 {
-	char *fw;
-	char *sw;
+	char		*fw;
+	char		*sw;
 
 	sw = ft_2nd_word(cmd);
 	fw = ft_first_word(cmd);
@@ -49,6 +49,10 @@ static void	ft_error(char *cmd, int en)
 		ft_putstr_base(": string not in pwd: ", 2);
 	if (en == 2)
 		ft_putstr_base(": no such file or directory: ", 2);
+	if (en == 3)
+		ft_putstr_base(": permission dinaed: ", 2);
+	if (en == 4)
+		ft_putstr_base(": not a direktory: ", 2);
 	ft_putstr_base(sw, 2);
 	ft_putchar_base('\n', 2);
 	free(sw);
@@ -103,15 +107,20 @@ char	*ft_find_home(char **av)
 
 void	ft_cd(char **av, char *cmd)
 {
-	char	*path;
+	struct stat	buff;
+	char		*path;
 
 	if (!ft_valid_command(cmd))
 		return ;
 	path = ft_2nd_word(cmd);
-	if (path == NULL)
+	if (path == NULL || ft_strncmp(path, "~", 1) == 0)
 		chdir(path = ft_find_home(av));
-	else if(chdir(path) == -1)
+	else if (stat(path, &buff) < 0)
 		ft_error(cmd, 2);
+	else if (!S_ISDIR(buff.st_mode))
+		ft_error(cmd, 4);
+	else if(chdir(path) == -1)
+		ft_error(cmd, 3);
 	if (path)
 		free(path);
 }

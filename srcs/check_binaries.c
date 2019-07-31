@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:30:06 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/28 19:08:05 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/31 19:24:08 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char	*ft_check_binaries(char *cmd, char ***env)
 		return (NULL);
 	path = ft_strdup((*env)[i]);
 	dirs = ft_cut(path, '=');
-	free (path);
+	free(path);
 	bin = ft_find_bin(cmd, dirs);
 	ft_mass2del(&dirs);
 	return (bin);

@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 17:12:59 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/31 18:18:49 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/31 19:48:53 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,24 @@ int		ft_execute(char *bin, char **args, char ***env)
 			i = 0;
 	}
 	else
-		wait (NULL);
+		wait(NULL);
 	if (i)
 		return (1);
 	return (0);
 }
 
-int		ft_check_bin(char *cmd, char *** env)
+int		ft_check_bin(char *cmd, char ***env)
 {
-	char 	**args;
-	char	*fw;
-	int		i;
+	struct stat	buff;
+	char		**args;
+	char		*fw;
+	int			i;
 
 	i = 0;
 	fw = ft_first_word(cmd);
 	args = ft_get_args(cmd);
-	if (!access(fw, 1))
+	stat(fw, &buff);
+	if (!access(fw, 1) && S_ISREG(buff.st_mode))
 	{
 		i = 1;
 		ft_execute(fw, args, env);
@@ -72,7 +74,7 @@ int		ft_binaries(char *cmd, char ***env)
 	fw = ft_first_word(cmd);
 	args = ft_get_args(cmd);
 	i = 0;
-	if (ft_execute(bin, args,env))
+	if (ft_execute(bin, args, env))
 		i = 1;
 	free(bin);
 	free(fw);

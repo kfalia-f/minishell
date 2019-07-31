@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 18:25:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/23 18:47:27 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/31 20:02:22 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,31 @@
 
 void	ft_unsetenv(char *cmd, char ***env)
 {
+	char	**tmp;
 	char	*line;
 	int		len;
 	int		i;
+	int		k;
 
 	if (!(line = ft_2nd_word(cmd)))
 		return ;
 	len = ft_strlen(line);
 	i = 0;
+	k = 0;
+	tmp = (char **)malloc(sizeof(char *) * ft_num_env(*env));
 	while ((*env)[i])
 	{
-		if (ft_strncmp((*env)[i], line, len) == 0)
+		if (ft_strncmp((*env)[i], line, len) != 0)
 		{
-			free((*env)[i]);
-			(*env)[i] = ft_strjoin("#DEL",  "");
-			break ;
+			tmp[k] = ft_strdup((*env)[i]);
+			k++;
 		}
 		i++;
 	}
+	tmp[k] = NULL;
+	ft_mass2del(env);
 	free(line);
+	*env = tmp;
 }
 
 void	ft_env(char *cmd, char ***env)
@@ -56,8 +62,7 @@ void	ft_env(char *cmd, char ***env)
 	}
 	while ((*env)[i])
 	{
-		if (ft_strcmp((*env)[i], "#DEL") != 0)
-			ft_putendl((*env)[i], 0);
+		ft_putendl((*env)[i], 0);
 		i++;
 	}
 	free(fw);

@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:16:30 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/31 16:48:15 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/31 19:28:39 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void	ft_setenv(char *cmd, char ***env);
 void	ft_echo(char *cmd);
 void	ft_change_path(char ***env);
 void	ft_cd_past(char ***env);
+char	*ft_tabsdel(char *str);
 #endif

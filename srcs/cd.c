@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:59:44 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/28 21:42:45 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/31 19:25:13 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ static void	ft_error(char *cmd, int en)
 	if (en == 3)
 		ft_putstr_base(": permission dinaed: ", 2);
 	if (en == 4)
-		ft_putstr_base(": not a direktory: ", 2);
+		ft_putstr_base(": not a directory: ", 2);
 	ft_putstr_base(sw, 2);
 	ft_putchar_base('\n', 2);
 	free(sw);
 	free(fw);
 }
 
-static int ft_valid_command(char *cmd)
+static int	ft_valid_command(char *cmd)
 {
 	int		i;
 	int		ct;
@@ -82,7 +82,7 @@ static int ft_valid_command(char *cmd)
 	return (1);
 }
 
-char	*ft_find_home(char **av)
+char		*ft_find_home(char **av)
 {
 	int		i;
 	int		j;
@@ -105,7 +105,7 @@ char	*ft_find_home(char **av)
 	return (path);
 }
 
-void	ft_cd(char **av, char ***env, char *cmd)
+void		ft_cd(char **av, char ***env, char *cmd)
 {
 	struct stat	buff;
 	char		*path;
@@ -124,7 +124,7 @@ void	ft_cd(char **av, char ***env, char *cmd)
 		ft_error(cmd, 2);
 	else if (!S_ISDIR(buff.st_mode))
 		ft_error(cmd, 4);
-	else if(chdir(path) == -1)
+	else if (chdir(path) == -1)
 		ft_error(cmd, 3);
 	else
 		ft_change_path(env);

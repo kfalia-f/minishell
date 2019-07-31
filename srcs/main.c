@@ -6,15 +6,15 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:17:31 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/28 18:04:02 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/31 19:26:16 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int     ft_num_env(char **av)
+int		ft_num_env(char **av)
 {
-	int     i;
+	int	i;
 
 	i = 0;
 	while (av[i])

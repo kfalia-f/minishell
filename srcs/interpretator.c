@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/31 19:28:18 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/31 20:09:11 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,18 @@ static int		ft_check_command(char *cmd)
 	return (0);
 }
 
+void			ft_return(char **fw, char **cmd)
+{
+	ft_error(*fw);
+	free(*fw);
+	free(*cmd);
+}
+
 void			ft_interpretator(char *str, char **av, char ***env)
 {
 	char	*fw;
 	char	*cmd;
 
-	fw = NULL;
 	if ((cmd = ft_tabsdel(str)) == NULL)
 		return ;
 	if (ft_binaries(cmd, env))
@@ -72,9 +78,7 @@ void			ft_interpretator(char *str, char **av, char ***env)
 	fw = ft_first_word(cmd);
 	if (!ft_check_command(fw))
 	{
-		ft_error(fw);
-		free(cmd);
-		free(fw);
+		ft_return(&fw, &cmd);
 		return ;
 	}
 	if (!ft_strcmp(fw, "echo"))

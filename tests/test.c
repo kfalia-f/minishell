@@ -5,12 +5,14 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include "../libft/includes/libft.h"
+#include <sys/ioctl.h>
 
 int		main(int ac, char **av)
 {
-	char *env_args[] = { (char*)0 };
-	char *args[] = {"/bin/ls", "-lG", "../../../", (char *)0};
-
-	execve(args[0], args, env_args);
+	(void)ac;
+	if (access(av[1], 1))
+		printf("yes");
+	else
+		printf("no");
 	return (0);
 }

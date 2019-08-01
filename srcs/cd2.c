@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 20:48:33 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/28 21:38:48 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/08/01 16:57:17 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,26 @@ void	ft_cd_past(char ***env)
 	ft_putendl(path, 0);
 	ft_change_path(env);
 	free(path);
+}
+
+void	ft_cd_doll(char *name, char ***env)
+{
+	int		i;
+	int		len;
+	char	*cmd;
+
+	i = 0;
+	len = ft_strlen(name + 1);
+	while ((*env)[i])
+	{
+		if (!ft_strncmp((*env)[i], name + 1, len))
+		{
+			ft_cd(*env, env, cmd = ft_strjoin("cd ", (*env)[i] + len + 1));
+			free(cmd);
+			return ;
+		}
+		i++;
+	}
+	ft_cd(*env, env, cmd = ft_strdup("cd"));
+	free(cmd);
 }

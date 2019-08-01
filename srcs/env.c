@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 18:25:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/31 20:02:22 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/08/01 17:59:58 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_unsetenv(char *cmd, char ***env)
 	int		i;
 	int		k;
 
-	if (!(line = ft_2nd_word(cmd)))
+	if (!(line = ft_2nd_word(cmd, env)))
 		return ;
 	len = ft_strlen(line);
 	i = 0;

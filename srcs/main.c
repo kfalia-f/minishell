@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:17:31 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/31 19:26:16 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/08/01 20:00:19 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		main(int ac, char **av, char **env)
 		if (str != NULL)
 			ft_mass2del(&str);
 		ft_putstr("$> ");
-		str = ft_readline(0);
+		str = ft_readline(0, my_env);
 		while (str[i])
 		{
 			ft_interpretator(str[i], av, &my_env);

@@ -6,7 +6,7 @@
 /*   By: kfalia-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 17:03:39 by kfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/31 20:09:11 by kfalia-f         ###   ########.fr       */
+/*   Updated: 2019/08/01 17:24:57 by kfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void			ft_interpretator(char *str, char **av, char ***env)
 	char	*fw;
 	char	*cmd;
 
-	if ((cmd = ft_tabsdel(str)) == NULL)
+	if ((cmd = ft_strtrim(str)) == NULL)
 		return ;
 	if (ft_binaries(cmd, env))
 	{
